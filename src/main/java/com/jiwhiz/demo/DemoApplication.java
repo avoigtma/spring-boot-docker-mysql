@@ -24,6 +24,17 @@ public class DemoApplication {
         return "Hello " + p.getName() + "!";
     }
 
+    @RequestMapping("/all")
+    public String all() {
+    	String result = "";
+    	Person p;
+    	while ((p = this.repository.findAll().iterator().next()) != null) {
+	        result += p.toString();
+	        result += "<br>";
+    	}
+        return result;
+    }
+
     public static void main(String[] args) throws Exception {
         SpringApplication.run(DemoApplication.class, args);
     }
